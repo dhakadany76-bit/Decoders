@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7faf5;
+  color: #0f172a;
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.dark {
+  background-color: #0a0f0d;
+  color: #f8fafc;
+}
+
+/* Frosted glass cards that let background farm scenery shine through while keeping text 100% crisp */
+.farm-card {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.farm-glass {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+.dark .farm-glass {
+  background-color: rgba(14, 21, 17, 0.84) !important;
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+/* Translucent surfaces so gorgeous agricultural wallpaper is visible across all cards & panels */
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dark .bg-white {
+  background-color: rgba(17, 26, 21, 0.88);
+  color: #f1f5f9;
+}
+
+.dark .text-stone-900 {
+  color: #f8fafc;
+}
+
+.dark .text-stone-800 {
+  color: #f1f5f9;
+}
+
+.dark .text-stone-700 {
+  color: #e2e8f0;
+}
+
+.dark .bg-stone-50 {
+  background-color: rgba(23, 33, 27, 0.80);
+}
+
+.dark .bg-stone-100 {
+  background-color: rgba(28, 40, 33, 0.80);
+}
+
+.dark .border-stone-200 {
+  border-color: rgba(71, 85, 105, 0.35);
+}
+
+.dark .border-stone-300 {
+  border-color: rgba(100, 116, 139, 0.45);
+}
+
+/* Animated living gradient that subtly shifts colors with time (Morning harvest gold -> Lush field emerald -> Sunset amber) */
+@keyframes ambientFarmFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-farm-gradient {
+  background: linear-gradient(135deg, #064e3b, #047857, #15803d, #b45309, #0f766e, #064e3b);
+  background-size: 300% 300%;
+  animation: ambientFarmFlow 16s ease infinite;
+}
+
+.animated-sun-gradient {
+  background: linear-gradient(135deg, #15803d, #047857, #d97706, #059669);
+  background-size: 250% 250%;
+  animation: ambientFarmFlow 12s ease infinite;
+}
+
+.animated-harvest-banner {
+  background: linear-gradient(120deg, #fef3c7, #dcfce7, #fef9c3, #e0e7ff);
+  background-size: 300% 300%;
+  animation: ambientFarmFlow 20s ease infinite;
+}
+
+.animated-aura-glow {
+  position: relative;
+}
+.animated-aura-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #10b981, #f59e0b, #10b981);
+  background-size: 200% 200%;
+  animation: ambientFarmFlow 6s linear infinite;
+  z-index: -1;
+  opacity: 0.45;
+  filter: blur(4px);
+}
+
+/* Micro animations */
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-soft-float {
+  animation: softFloat 4s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a7f3d0;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
